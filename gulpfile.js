@@ -6,7 +6,6 @@ var path = require('path');
 var url = require('url');
 var fs = require('fs');
 var data = require('./mock/data');
-var list = require('./mock/makePY');
 
 gulp.task('server',['devCss'],function(){
     gulp.src('src')
@@ -18,7 +17,7 @@ gulp.task('server',['devCss'],function(){
                     return false;
                 }
                 if(pathname === '/api/list'){
-                    res.end(JSON.stringify({code:1,data:data}))
+                    res.end(JSON.stringify(data))
                 }else{
                     pathname = pathname === '/' ? './index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
