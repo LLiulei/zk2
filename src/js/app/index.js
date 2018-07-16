@@ -1,0 +1,13 @@
+require(['jquery','render'],function($,render){
+    $.ajax({
+        url:'/api/list',
+        dataType:'json',
+        success:function(res){
+            console.log(res.data)
+            render('#list-tpl','.list-h',res.data)
+        },
+        error:function(error){
+            console.warn(error)
+        }
+    })
+})
